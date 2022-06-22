@@ -36,9 +36,8 @@ p {
 
 .app-loading {
   position: fixed;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 8px;
+  right: 8px;
   z-index: 1000;
   background-color: #fbfbfb;
   border-radius: 8px;
