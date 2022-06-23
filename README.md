@@ -1,4 +1,6 @@
 # Proof of Concept
+Demonstrates mbtiles and cluster sources in the browser to show large amounts of data.
+
 https://bwswedberg.github.io/mbtiles-protocol/
 
 ## MBTiles Source (~17m points)
