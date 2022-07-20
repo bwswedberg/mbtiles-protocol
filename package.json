@@ -1,5 +1,5 @@
 {
-  "name": "mbtiles-protocol",
+  "name": "alt-vector-tile-demos",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -8,10 +8,9 @@
     "build": "rm -rf dist && DOTENV_CONFIG_PATH=./.env.prod NODE_OPTIONS='-r dotenv/config' webpack --mode production",
     "deploy": "rm -rf docs && cp -R dist docs",
     "format:geojson": "ts-node ./scripts/formatGeolifeAsGeojson.ts limit=1000000 output=./public/geolife-1mv2.geojson",
-    "tippecanoe:run": "tippecanoe -f -z12 -o geolife-full-z12.mbtiles -l geolife --drop-densest-as-needed data/geolife-full-v12.geojson",
+    "tippecanoe:exec": "tippecanoe -f -P -z12 -r1 -l geolife --cluster-distance=10 -o geolife-full-z12cd10.mbtiles data/geolife-full.geojson",
     "sqlite:dumpmbtiles": "sqlite3 public/geolife-full-v12.mbtiles \"SELECT writefile('public/geolife-full-v12' || '/' || zoom_level || '/' || tile_column || '/' || tile_row || '.pbf.gz', tile_data) FROM tiles\"",
-    "sqlite:zip": "zip -0 -r public/geolife-full-v12.zip public/geolife-full-v12",
-    "tessella:start": "tessella mbtiles://./public/geolife-full-z12.mbtiles"
+    "sqlite:zip": "zip -0 -r public/geolife-full-v12.zip public/geolife-full-v12"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +19,7 @@
     "idb": "^7.0.2",
     "mapbox-gl": "^2.8.2",
     "maplibre-gl": "^2.1.9",
+    "pmtiles": "^1.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-map-gl": "^7.0.15",
@@ -59,7 +59,6 @@
     "glob": "^8.0.3",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
-    "tessella": "^2.3.3",
     "ts-loader": "^9.3.0",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.3",

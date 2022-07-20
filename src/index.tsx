@@ -12,7 +12,7 @@ root.render((
   <HashRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<Navigate replace to="/mbtiles" />} />
+        <Route index element={<Navigate replace to="/pmtiles" />} />
         <Route path=":demo" element={<Map />} />
       </Route>
     </Routes>

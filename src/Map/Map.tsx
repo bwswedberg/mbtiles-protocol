@@ -6,7 +6,9 @@ import { BaseTileSource } from './BaseTileSource';
 import { mbtilesProtocol, MBTILES_PROTOCOL } from './MbtilesSource/mbtilesProtocol';
 import { MbtilesSource } from './MbtilesSource/MbtilesSource';
 import { GeojsonSource } from './GeojsonSource';
+import { PmtilesSource, pmtilesProtocol, PMTILES_PROTOCOL } from './PmtilesSource';
 
+maplibregl.addProtocol(PMTILES_PROTOCOL, pmtilesProtocol);
 maplibregl.addProtocol(MBTILES_PROTOCOL, mbtilesProtocol);
 
 const mapStyle = { 
@@ -33,6 +35,8 @@ export const Map: FC = () => {
         <MbtilesSource />
       ) : params.demo === 'geojson' ? (
         <GeojsonSource />
+      ) : params.demo === 'pmtiles' ? (
+        <PmtilesSource />
       ) : null}
     </MapGL>
   );

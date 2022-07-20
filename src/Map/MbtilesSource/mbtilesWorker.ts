@@ -18,6 +18,11 @@ const getMbtiles = async (url: string) => {
   return new sql.Database(new Uint8Array(data));
 };
 
+const getTileset = async (db: IndexdbTilesetDatabase, tilesetId: string) => {
+  const record = await db.get(INDEXDB_TILESET_METADATA_STORE, tilesetId as "id");
+  return record;
+};
+
 const putTileset = async (db: IndexdbTilesetDatabase, tilesetId: string) => {
   await db.put(INDEXDB_TILESET_METADATA_STORE, {
     id: tilesetId,
@@ -88,6 +93,14 @@ const handleRegisterTileset = async (event: RegisterTilesetEvent) => {
     const { url, tilesetId } = event.payload;
     postProgressMessage(tilesetId, 'start');
     const db = await openTilesetDb();
+
+    const tileset = await getTileset(db, tilesetId);
+    if (tileset) {
+      self.postMessage(new RegisterTilesetFulfilledEvent({
+        tilesetId: event.payload.tilesetId,
+      }));
+      return 
+    }
     
     // Get all the raw tileset data
     postProgressMessage(tilesetId, 'initMbtiles:begin');
