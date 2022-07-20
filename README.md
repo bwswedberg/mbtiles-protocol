@@ -1,7 +1,10 @@
-# Alt Vector Tile Demos
+# Alternate Vector Tile Protocol Demos
 Demonstrates mbtiles and cluster sources in the browser to show large amounts of data.
 
-https://bwswedberg.github.io/mbtiles-protocol/
+https://bwswedberg.github.io/vector-tile-protocols/
+
+## PMTiles Source (~17m points)
+Serves vector tiles from (PMTiles)[https://github.com/protomaps/PMTiles]
 
 ## MBTiles Source (~17m points)
 Serves vector tiles from mbtiles in browser
